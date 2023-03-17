@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         /*
         Basic: Create a program that does conversions between Standard (metric)
@@ -22,8 +22,10 @@ public class Main {
 
         */
 
-/*      Testing temperature conversions
-        Temperature aZero = new Temperature(0,"K");
+     // Testing temperature conversions
+        Temperature errTest = new Temperature(51, "Centigrade");
+        System.out.println(errTest.unit_of_measurement);
+/*        Temperature aZero = new Temperature(0,"K");
         Temperature sBoil = new Temperature(100, "C");
         Temperature iFreeze = new Temperature(32, "F");
         System.out.println("Non-static");
@@ -35,7 +37,7 @@ public class Main {
         System.out.println(iFreeze.toKelvin());
         System.out.println("Static");
         System.out.println(Temperature.KtoC(0));
-        System.out.println(Temperature.KtoF(373));
+        System.out.println(Temperature.KtoF(373.15));
         System.out.println(Temperature.CtoF(0));
         System.out.println(Temperature.CtoK(0));
         System.out.println(Temperature.FtoC(32));
