@@ -37,27 +37,27 @@ public class Distance { //Link
     Exception e = new Exception("Invalid unit type error. Use Distance.listUnits() to view valid unit_of_measurement values.");
     //compare unit of measurement value to a list of acceptable values. accommodate some values, throw exception otherwise
     public void validateUnit() throws Exception {
-        String[] valid_unit_values = new String[]{
+        String[] valid_unit_values = new String[]{ //strings of unit values used in formula methods
                 "mm", "cm", "dm", "m", "dam", "hm", "km", "in", "ft", "yd", "mi"
         };
-        String[] near_miss = new String[]{
+        String[] near_miss = new String[]{ //strings equal to, but still need to be changed to previous string values
                 "millimeters", "centimeters", "decimeters", "meters", "dekameters", "hectometers",
                 "kilometers", "inches", "feet", "yards", "miles"
         };
-        boolean invalid = true;
-        for(int i = 0; i<near_miss.length; i++){
+        boolean invalid = true; //behavior flag
+        for(int i = 0; i<near_miss.length; i++){ //check against non-abbreviated forms, change to valid form if match
             if(this.unit_of_measurement.equalsIgnoreCase(near_miss[i])){
                 this.unit_of_measurement = valid_unit_values[i];
                 invalid = false;
                 break;
-            }
+            } //check against abbreviated forms, ignoring case. make sure case matches.
             else if (this.unit_of_measurement.equalsIgnoreCase(valid_unit_values[i])){
                 this.unit_of_measurement = valid_unit_values[i];
                 invalid = false;
                 break;
             }
         }
-        if(invalid){
+        if(invalid){ //if the input unit does not match, throw special exception
             throw e;
         }
     }
@@ -504,290 +504,290 @@ public class Distance { //Link
         return n * 1760;
     }
 
-    //create non-static conversions, which confirm their own unit type and process accordingly,  for every included unit of distance
+    //create non-static conversions, which confirm their own unit type and process accordingly, for every included unit of distance
     public double toMM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return this.value;
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtomm(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtomm(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtomm(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtomm(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtomm(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtomm(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intomm(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttomm(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtomm(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitomm(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return -1.0;
     }
 
     public double toCM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtocm(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return this.value;
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtocm(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtocm(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtocm(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtocm(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtocm(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intocm(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttocm(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtocm(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitocm(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toDM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtodm(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtodm(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return this.value;
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtodm(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtodm(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtodm(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtodm(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intodm(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttodm(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtodm(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitodm(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtom(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtom(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtom(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return this.value;
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtom(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtom(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtom(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intom(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttom(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtom(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitom(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toDAM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtodam(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtodam(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtodam(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtodam(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return this.value;
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtodam(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtodam(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intodam(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttodam(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtodam(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitodam(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toHM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtohm(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtohm(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtohm(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtohm(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtohm(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return this.value;
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtohm(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intohm(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttohm(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtohm(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitohm(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toKM() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtokm(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtokm(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtokm(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtokm(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtokm(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtokm(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return this.value;
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intokm(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttokm(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtokm(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitokm(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toIN() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtoin(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtoin(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtoin(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtoin(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtoin(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtoin(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtoin(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return this.value;
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttoin(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtoin(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitoin(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toFT() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtoft(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtoft(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtoft(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtoft(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtoft(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtoft(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtoft(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intoft(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return this.value;
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtoft(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitoft(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toYD() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtoyd(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtoyd(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtoyd(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtoyd(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtoyd(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtoyd(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtoyd(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intoyd(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttoyd(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return this.value;
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return mitoyd(this.value);
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
     }
     public double toMI() {
-        if (this.unit_of_measurement == "mm") {
+        if (this.unit_of_measurement.equals("mm")) {
             return mmtomi(this.value);
-        } else if (this.unit_of_measurement == "cm") {
+        } else if (this.unit_of_measurement.equals("cm")) {
             return cmtomi(this.value);
-        } else if (this.unit_of_measurement == "dm") {
+        } else if (this.unit_of_measurement.equals("dm")) {
             return dmtomi(this.value);
-        } else if (this.unit_of_measurement == "m") {
+        } else if (this.unit_of_measurement.equals("m")) {
             return mtomi(this.value);
-        } else if (this.unit_of_measurement == "dam") {
+        } else if (this.unit_of_measurement.equals("dam")) {
             return damtomi(this.value);
-        } else if (this.unit_of_measurement == "hm") {
+        } else if (this.unit_of_measurement.equals("hm")) {
             return hmtomi(this.value);
-        } else if (this.unit_of_measurement == "km") {
+        } else if (this.unit_of_measurement.equals("km")) {
             return kmtomi(this.value);
-        } else if (this.unit_of_measurement == "in") {
+        } else if (this.unit_of_measurement.equals("in")) {
             return intomi(this.value);
-        } else if (this.unit_of_measurement == "ft") {
+        } else if (this.unit_of_measurement.equals("ft")) {
             return fttomi(this.value);
-        } else if (this.unit_of_measurement == "yd") {
+        } else if (this.unit_of_measurement.equals("yd")) {
             return ydtomi(this.value);
-        } else if (this.unit_of_measurement == "mi") {
+        } else if (this.unit_of_measurement.equals("mi")) {
             return this.value;
         } else System.out.println("This unit of measurement is not recognized.");
         return 0.0;
