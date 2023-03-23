@@ -35,46 +35,30 @@ public class Distance { //Link
 
     //create an exception to throw for invalid unit_of_measurement, create method to validate said unit
     Exception e = new Exception("Invalid unit type error. Use Distance.listUnits() to view valid unit_of_measurement values.");
-
+    //compare unit of measurement value to a list of acceptable values. accommodate some values, throw exception otherwise
     public void validateUnit() throws Exception {
-        switch (this.unit_of_measurement) {
-            case "mm", "cm", "dm", "m", "dam", "hm", "km", "in", "ft", "yd", "mi":
+        String[] valid_unit_values = new String[]{
+                "mm", "cm", "dm", "m", "dam", "hm", "km", "in", "ft", "yd", "mi"
+        };
+        String[] near_miss = new String[]{
+                "millimeters", "centimeters", "decimeters", "meters", "dekameters", "hectometers",
+                "kilometers", "inches", "feet", "yards", "miles"
+        };
+        boolean invalid = true;
+        for(int i = 0; i<near_miss.length; i++){
+            if(this.unit_of_measurement.equalsIgnoreCase(near_miss[i])){
+                this.unit_of_measurement = valid_unit_values[i];
+                invalid = false;
                 break;
-            case "millimeters":
-                this.unit_of_measurement = "mm";
+            }
+            else if (this.unit_of_measurement.equalsIgnoreCase(valid_unit_values[i])){
+                this.unit_of_measurement = valid_unit_values[i];
+                invalid = false;
                 break;
-            case "centimeters":
-                this.unit_of_measurement = "cm";
-                break;
-            case "decimeters":
-                this.unit_of_measurement = "dm";
-                break;
-            case "meters":
-                this.unit_of_measurement = "m";
-                break;
-            case "dekameters":
-                this.unit_of_measurement = "dam";
-                break;
-            case "hectometers":
-                this.unit_of_measurement = "hm";
-                break;
-            case "kilometers":
-                this.unit_of_measurement = "km";
-                break;
-            case "inches":
-                this.unit_of_measurement = "in";
-                break;
-            case "feet":
-                this.unit_of_measurement = "ft";
-                break;
-            case "yards":
-                this.unit_of_measurement = "yd";
-                break;
-            case "miles":
-                this.unit_of_measurement = "mi";
-                break;
-            default:
-                throw e;
+            }
+        }
+        if(invalid){
+            throw e;
         }
     }
 
