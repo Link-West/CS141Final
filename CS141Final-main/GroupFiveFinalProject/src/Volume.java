@@ -1,4 +1,9 @@
+import java.util.Random;
+
 public class Volume { //Fernando
+        public static void main(String[] args){
+rand();
+        }
     double value;
     String unit_of_measurement;
 //default constructor resulting in 0 meters
@@ -10,9 +15,16 @@ public class Volume { //Fernando
         public Volume (double n, String u) throws Exception{
                 value = n;
                 unit_of_measurement = u;
-                validateunit();
+                validateUnit();
         }
 
+        public static void rand(){
+                System.out.println("Random number from 0 to 1000 to convert:");
+                Random y = new Random();
+                int x = y.nextInt(1001);
+                System.out.println(x);
+
+        }
         public static void listUnits() {
                 System.out.println("Imperial Units of Volume");
                 System.out.println("\"ts\", for Tea Spoon");
