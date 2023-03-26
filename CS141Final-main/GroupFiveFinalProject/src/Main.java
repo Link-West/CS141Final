@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) throws Exception {
 
@@ -21,11 +23,10 @@ public class Main {
         when first given a value.
 
         */
-
-     // Testing temperature conversions
+        //L: Testing temperature
         Temperature errTest = new Temperature(51, "Centigrade");
         System.out.println(errTest.unit_of_measurement);
-/*        Temperature aZero = new Temperature(0,"K");
+        Temperature aZero = new Temperature(0,"K");
         Temperature sBoil = new Temperature(100, "C");
         Temperature iFreeze = new Temperature(32, "F");
         System.out.println("Non-static");
@@ -41,7 +42,45 @@ public class Main {
         System.out.println(Temperature.CtoF(0));
         System.out.println(Temperature.CtoK(0));
         System.out.println(Temperature.FtoC(32));
-        System.out.println(Temperature.FtoK(212));*/
+        System.out.println(Temperature.FtoK(212));
 
+
+        //L: Testing distance
+        System.out.println("Testing Distance.");
+        System.out.println(Distance.cmtoin(22.4));
+        Distance marathon = new Distance(26.2, "mi");
+        System.out.println(marathon.toKM());
+
+        //Testing Volume + Randomizer
+        //L: creates an object, randomizedVol, from 0.0-9.99 liters, to play with
+
+        System.out.println("Testing Volume.");
+        Volume randomizedVol = new Volume ((randDouble()+randInt()), "l");
+        randomizedVol.toC();
+        randomizedVol.toTBS();
+
+        //Testing Weight + File Reading
+        // Generate a random weight and convert it
+        double randomWeight = Weight.generateRandomWeight();
+        Weight converter1 = new Weight(randomWeight);
+        System.out.println("Random Weight Conversion:");
+        System.out.println(converter1.toString());
+
+        // Convert weights from a file
+        System.out.println("\nFile Input Conversion:");
+        Weight.convertWeightsFromFile("weights.txt");
+
+    }
+    /*L: had Fernando build a randomizer to create an object to manipulate. apparently main won't accept an object
+    created by a method to work with. moved his randomizer out here, and stripped it of its inherent volume class.
+    rand() will now just assign a random values
+     */
+    public static double randDouble(){
+        Random y = new Random();
+        return y.nextDouble(); //L: changed value into a double
+    }
+    public static int randInt(){
+        Random y = new Random();
+        return y.nextInt(10); //L: changed value into a double
     }
 }
